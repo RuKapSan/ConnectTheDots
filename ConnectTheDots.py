@@ -44,7 +44,7 @@ def run(context):
         for index,point in enumerate(points): 
             #Ignore invalid points, points that aren't connected to objects, and aren't center points for circles, arcs, and curves... 
             if validatePoint(point):
-                for merge in points[index+1:]:
+                for merge in list(points)[index+1:]:
                     if validatePoint(merge):
                         distance = point.geometry.distanceTo(merge.geometry)
                         if 0.0 <= distance < threshold_distance:
